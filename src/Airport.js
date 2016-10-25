@@ -1,7 +1,15 @@
-var Airport = function () {
-
+function Airport () {
+this.planes = [];
 };
 
-Airport.prototype.land = function() {
-  return true;
+Airport.prototype.land = function(plane) {
+  return plane;
+};
+
+Airport.prototype.takeOff = function(plane) {
+  return null;
+};
+
+var Plane = function () {
+
 };
