@@ -1,20 +1,40 @@
 describe('Airport', function(){
   var airport;
-  var plane;
+  var gatwick;
+  //DummyPlane is an object constructor for a plane 'double'
+  function DummyPlane(){};
+  var plane = new DummyPlane();
   beforeEach(function() {
     airport = new Airport();
-    plane = new Plane();
   });
 
   it('tells a plane to land', function(){
-    expect(airport.land(plane)).toEqual(plane);
+    airport.land(plane);
+    expect(airport.planes).toContain(plane);
   });
 
   it('tells a plane to take off', function(){
-    expect(airport.takeOff(plane)).toEqual(null);
+    airport.land(plane);
+    airport.takeOff(plane);
+    expect(airport.planes).not.toContain(plane);
   });
 
   it('has an empty airport on construction', function(){
     expect(airport.planes).toEqual([]);
   });
+
+  it('has a default capacity on construction', function () {
+    expect(airport.CAPACITY).toEqual(20);
+  });
+
+  it('has a default capacity that can be overridden on on construction', function(){
+    gatwick = new Airport (12);
+    expect(gatwick.CAPACITY).toEqual(12);
+  });
+
+  it('has a default capacity that can be changed later', function(){
+    airport.setCapacity(50);
+    expect(airport.CAPACITY).toEqual(50);
+  });
+
 });
