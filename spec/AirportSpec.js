@@ -65,4 +65,18 @@ describe('Airport', function(){
   });
 
 
+  describe('', function(){
+    beforeEach(function() {
+      for(var i = 1; i < 21; i++){
+        airport.land(plane);
+      }
+    });
+
+    it('stops a plane landing when airport is full', function(){
+      console.log(airport.planes.length);
+      expect(airport.land(plane)).toEqual('No landing when airport is full');
+    });
+
+  });
+
 });

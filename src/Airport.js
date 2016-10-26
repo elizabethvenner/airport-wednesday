@@ -7,6 +7,8 @@ this.cWeather = false;
 Airport.prototype.land = function(plane) {
   if (this.cWeather === true) {
     return ('No landing during bad weather');
+  } else if (this.planes.length >= 20) {
+    return ('No landing when airport is full');
   } else {
     this.planes.push(plane);
   }
